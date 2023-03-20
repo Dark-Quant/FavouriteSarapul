@@ -12,9 +12,9 @@ using Object = System.Object;
 
 public class TourSelect : MonoBehaviour
 {
-    public List<Tour> tours;
     public GameObject listContent;
     public GameObject descriptionPanel;
+<<<<<<< HEAD
     public GameObject prefabTourElement;
     private string filePath;
 
@@ -23,6 +23,19 @@ public class TourSelect : MonoBehaviour
         filePath = Application.persistentDataPath + "/tours.save";
         Load();
         ReloadTours(); 
+=======
+    public List<Tour> tours;
+
+    private void Awake()
+    {
+        foreach (Tour tour in tours)
+        {
+            GameObject elem = Instantiate(tour.prefabTourElement, new Vector3(0, 0), Quaternion.identity);
+            elem.transform.SetParent(listContent.transform);
+            elem.transform.Find("TourText").GetComponent<TextMeshProUGUI>().text = tour.title;
+            elem.GetComponent<Button>().onClick.AddListener(delegate { SelectTour(tour.id); });
+        }
+>>>>>>> 3955204facf8408c8af623ae95f4b436a62d7d50
     }
 
     // Start is called before the first frame update
@@ -35,6 +48,7 @@ public class TourSelect : MonoBehaviour
     {
     }
 
+<<<<<<< HEAD
     public void UpdateDescription(string slug)
     {
         foreach (var tour in tours)
@@ -83,5 +97,35 @@ public class TourSelect : MonoBehaviour
             elem.transform.Find("TourIcon").GetComponent<Image>().material.SetTexture("_MainTex", tour.image);
             elem.GetComponent<Button>().onClick.AddListener(delegate { UpdateDescription(tour.slug); });
         }
+=======
+    private void SelectTour(int id)
+    {
+        descriptionPanel.transform.Find("LocationButton").GetComponent<Button>().onClick.AddListener(delegate
+        {
+            SetLocation(tours[id].latitude, tours[id].longitude);
+        });
+        descriptionPanel.transform.Find("DescriptionImage").GetComponent<Image>().material
+            .SetTexture("_MainTex", tours[id].image);
+        descriptionPanel.transform.Find("DescriptionText").GetComponent<TextMeshProUGUI>().text = tours[id].description;
+    }
+
+    void SetLocation(double latitude, double longitude)
+    {
+        String url = "geo:" + latitude + "," + longitude;
+        Application.OpenURL(url);
+    }
+
+    [Serializable]
+    public class Tour
+    {
+        public int id;
+        public String title;
+        public String description;
+        public Texture image;
+        public GameObject prefabTourElement;
+        public double longitude;
+        public double latitude;
+        public Object model;
+>>>>>>> 3955204facf8408c8af623ae95f4b436a62d7d50
     }
 }
