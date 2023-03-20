@@ -1,13 +1,38 @@
 {
-    "m_SelectedDeviceId": "",
+    "m_SelectedDeviceId": "192.168.0.25:43001",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "192.168.0.25:43001",
+        "name": "com.DefaultCompany.FavouriteSarapul",
+        "processId": 13203,
         "exited": false
     },
-    "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [],
+    "m_SelectedPriority": 4,
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "0899037296002434",
+            "name": "org.telegram.messenger",
+            "processId": 25231,
+            "exited": true
+        },
+        {
+            "deviceId": "0899037296002434",
+            "name": "com.DefaultCompany.FavouriteSarapul",
+            "processId": 4382,
+            "exited": true
+        },
+        {
+            "deviceId": "0899037296002434",
+            "name": "com.DefaultCompany.FavouriteSarapul",
+            "processId": 8973,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.0.25:43001",
+            "name": "com.DefaultCompany.FavouriteSarapul",
+            "processId": 13203,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
@@ -41,9 +66,20 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 0.0,
-        "MemoryWindowWidth": 0.0,
-        "MemoryTypeEnabled": [],
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
         "MemoryGroup": 2,
         "Behavior": 0
     },

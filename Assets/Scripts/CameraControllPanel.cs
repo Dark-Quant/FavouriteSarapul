@@ -4,11 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class CameraControllPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public Transform player;
-    public CinemachineVirtualCamera CVC;
+    public CinemachineVirtualCamera cvc;
     public float sensitivity;
     public float minimumAngle;
     public float maximumAngle;
@@ -18,8 +19,6 @@ public class CameraControllPanel : MonoBehaviour, IPointerDownHandler, IPointerU
     // Start is called before the first frame update
     void Start()
     {
-        CVC.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_InputAxisName = "";
-        CVC.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_InputAxisName = "";
     }
 
     // Update is called once     per frame
@@ -37,7 +36,6 @@ public class CameraControllPanel : MonoBehaviour, IPointerDownHandler, IPointerU
                         player.rotation *= Quaternion.AngleAxis(touch.deltaPosition.x * sensitivity, Vector3.up);
 
                         float angleX = player.localEulerAngles.x;
-                        Debug.Log(angleX);
                         if (angleX > 180 && angleX < maximumAngle)
                         {
                             angleX = maximumAngle;
@@ -66,7 +64,7 @@ public class CameraControllPanel : MonoBehaviour, IPointerDownHandler, IPointerU
     public void OnPointerUp(PointerEventData eventData)
     {
         isPressed = false;
-        CVC.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_InputAxisValue = 0;
-        CVC.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_InputAxisValue = 0;
+        cvc.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_InputAxisValue = 0;
+        cvc.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_InputAxisValue = 0;
     }
 }

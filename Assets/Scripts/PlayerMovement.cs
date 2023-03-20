@@ -26,8 +26,6 @@ public class PlayerMovement : MonoBehaviour
 
         float h = fixedJoystick.Horizontal, v = fixedJoystick.Vertical;
 
-        Debug.Log("V " + v);
-        Debug.Log("H " + h);
         
         Vector3 camF = mainCamera.forward;
         Vector3 camR = mainCamera.right;
